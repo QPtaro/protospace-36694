@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @name = current_user.name
-    @profile = current_user.profile
-    @occupation = current_user.occupation
-    @position = current_user.position
-    @prototypes = Prototype.includes(:user).where(user_id: current_user.id)
+    @user = User.find(params[:id])
+    @name = @user.name
+    @profile = @user.profile
+    @occupation = @user.occupation
+    @position = @user.position
+    @prototypes = Prototype.includes(:user).where(user_id: @user.id)
   end
 end
